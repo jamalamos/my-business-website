@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BrightStart Business</title>
+
+  <style>
+    /* CSS: controls the appearance */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #243047;
+      line-height: 1.6;
+      background: #f5f7fb;
+    }
+
+    header {
+      background: #12305a;
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px;
+      background: #e4edff;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #1768d1;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    section {
+      padding: 50px 8%;
+      text-align: center;
+    }
+
+    .services {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .service {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      flex: 1 1 200px;
+      max-width: 320px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+
+    #message {
+      margin-top: 16px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #12305a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HTML: the website content -->
+  <header>
+    <h2>BrightStart</h2>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="home">
+      <h1>Welcome to Our Business</h1>
+
+      <p>
+        We help customers find the right solutions
+        through reliable service and quality work.
+      </p>
+
+      <a class="button" href="#services">
+        Explore Our Services
+      </a>
+    </div>
+
+    <section id="services">
+      <h2>What We Offer</h2>
+
+      <div class="services">
+        <div class="service">
+          <h3>Our Services</h3>
+          <p>Professional solutions for your needs.</p>
+        </div>
+
+        <div class="service">
+          <h3>Quality Products</h3>
+          <p>Useful products selected with care.</p>
+        </div>
+
+        <div class="service">
+          <h3>Customer Support</h3>
+          <p>Friendly assistance when you need it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get in Touch</h2>
+      <p>Have a question? Start by clicking below.</p>
+
+      <button class="button" id="contactButton">
+        Contact Us
+      </button>
+
+      <p id="message"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 BrightStart Business</p>
+    <p>Built with HTML, CSS and JavaScript.</p>
+  </footer>
+
+  <script>
+    // JavaScript: makes the button interactive
+    const button = document.getElementById("contactButton");
+    const message = document.getElementById("message");
+
+    button.addEventListener("click", function () {
+      message.textContent =
+        "Thank you for your interest! Add your contact details here.";
+    });
+  </script>
+
+</body>
+</html>
