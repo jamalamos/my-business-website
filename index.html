@@ -2,307 +2,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tender Registration Portal</title>
-  <style>
-    :root {
-      --green: #124734;
-      --gold: #d8b45b;
-      --light: #f4f7f4;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--light);
-      color: #24352c;
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--green);
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    header h2 { margin: 0; }
-    header a { color: var(--gold); text-decoration: none; }
-
-    .hero {
-      background: linear-gradient(120deg, #124734, #267653);
-      color: white;
-      padding: 75px 7%;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      max-width: 700px;
-      line-height: 1.15;
-    }
-
-    .hero p { max-width: 650px; }
-
-    .button {
-      display: inline-block;
-      padding: 13px 22px;
-      background: var(--gold);
-      color: #173426;
-      text-decoration: none;
-      border: none;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    section { padding: 45px 7%; }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card, form, .fee-box {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid #dce5de;
-    }
-
-    .card h3, h2 { color: var(--green); }
-
-    .registration {
-      background: #eaf0eb;
-    }
-
-    .fee {
-      font-size: 36px;
-      color: var(--green);
-      font-weight: bold;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .full { grid-column: 1 / -1; }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #bdcfc2;
-      border-radius: 6px;
-      font: inherit;
-    }
-
-    .notice {
-      background: #fff4d5;
-      border-left: 5px solid var(--gold);
-      padding: 15px;
-      margin-top: 22px;
-    }
-
-    .message {
-      display: none;
-      padding: 15px;
-      margin-top: 18px;
-      background: #e5f3e8;
-      border-radius: 7px;
-    }
-
-    footer {
-      background: #0d3326;
-      color: white;
-      padding: 28px 7%;
-    }
-
-    @media (max-width: 600px) {
-      .form-grid { grid-template-columns: 1fr; }
-      .full { grid-column: auto; }
-      .hero { padding: 48px 7%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tender Registration Portal</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6f5;color:#24352c}
+header{background:#104b35;color:white;padding:22px 7%;display:flex;justify-content:space-between;align-items:center}
+header strong{font-size:21px}
+header a{color:#e6c46d;text-decoration:none}
+.hero{background:linear-gradient(120deg,#104b35,#21734e);color:white;padding:65px 8%}
+.hero h1{font-size:clamp(30px,5vw,48px);max-width:700px}
+.hero p{max-width:650px;line-height:1.7}
+section{max-width:1000px;margin:auto;padding:40px 20px}
+.card{background:white;padding:28px;border-radius:12px;margin-bottom:22px;box-shadow:0 3px 15px #0000000b}
+h2,h3{color:#104b35}
+.fee{font-size:38px;font-weight:bold;color:#087a45}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input{width:100%;padding:13px;border:1px solid #ccd8d0;border-radius:7px;font-size:16px}
+button{background:#078344;color:white;border:0;border-radius:7px;padding:15px 22px;font-size:16px;font-weight:bold;cursor:pointer;width:100%;margin-top:20px}
+button:disabled{opacity:.6;cursor:wait}
+.note{background:#fff5d9;padding:15px;border-left:4px solid #d8b45b;line-height:1.6}
+#status{display:none;margin-top:18px;padding:15px;border-radius:8px;line-height:1.5}
+footer{background:#103c2d;color:white;text-align:center;padding:28px}
+footer a{color:#e6c46d}
+small{color:#65756b}
+</style>
 </head>
-
 <body>
-  <header>
-    <h2>TENDER PORTAL</h2>
-    <a href="#register">Register for Tender ↓</a>
-  </header>
 
-  <main>
-    <div class="hero">
-      <p>PROCUREMENT OPPORTUNITY</p>
-      <h1>Register your interest in our tender opportunity</h1>
-      <p>
-        Review the tender information and submit your registration
-        request using the form below.
-      </p>
-      <a class="button" href="#register">Start Registration</a>
-    </div>
+<header>
+<strong>TENDER REGISTRATION</strong>
+<a href="mailto:tender@millers.co.ke">Contact us</a>
+</header>
 
-    <section>
-      <h2>Tender Information</h2>
+<div class="hero">
+<p>PROCUREMENT OPPORTUNITY</p>
+<h1>Register your interest in the tender</h1>
+<p>Complete your applicant details and follow the M-Pesa payment instructions to submit your registration request.</p>
+</div>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Tender Title</h3>
-          <p>[Enter the official tender title]</p>
-        </div>
+<section>
+<div class="card">
+<h2>Tender Registration Fee</h2>
+<div class="fee">KSh 1,500</div>
+<p>Payment is requested through Safaricom M-Pesa STK Push.</p>
+<div class="note">
+<strong>Important:</strong> Registration does not guarantee a tender award. Review the official tender documents and confirm the issuer and payment terms before paying.
+</div>
+</div>
 
-        <div class="card">
-          <h3>Tender Reference</h3>
-          <p>[Enter the official reference number]</p>
-        </div>
+<div class="card">
+<h2>Applicant Details</h2>
+<form id="paymentForm">
+<label for="name">Full name</label>
+<input id="name" name="name" required maxlength="100" autocomplete="name">
 
-        <div class="card">
-          <h3>Closing Date</h3>
-          <p>[Enter the confirmed closing date and time]</p>
-        </div>
-      </div>
+<label for="company">Company name</label>
+<input id="company" name="company" required maxlength="120" autocomplete="organization">
 
-      <div class="notice">
-        <strong>Important:</strong>
-        Confirm the tender with the issuing organization before
-        making any payment. Use only authorized payment details.
-      </div>
-    </section>
+<label for="email">Email address</label>
+<input id="email" name="email" type="email" required maxlength="150" autocomplete="email">
 
-    <section class="registration" id="register">
-      <h2>Applicant Registration</h2>
-      <p>Registration fee displayed: KSh 1,500.</p>
+<label for="phone">Safaricom M-Pesa phone number</label>
+<input id="phone" name="phone" type="tel" placeholder="07XXXXXXXX or 2547XXXXXXXX" required>
 
-      <div class="cards">
-        <div class="fee-box">
-          <h3>Registration Fee</h3>
-          <div class="fee">KSh 1,500</div>
-          <p>One-time fee, subject to confirmation by the official issuer.</p>
+<label for="reference">Tender reference number</label>
+<input id="reference" name="reference" required maxlength="50">
 
-          <h3>Payment Instructions</h3>
-          <p>
-            [Insert the verified and authorized Paybill, Till,
-            or bank payment instructions here.]
-          </p>
-          <p>Never share your M-Pesa PIN or bank password.</p>
-        </div>
+<button id="payButton" type="submit">Pay KSh 1,500 via M-Pesa</button>
+</form>
+<div id="status" role="status" aria-live="polite"></div>
+</div>
 
-        <form id="tenderForm">
-          <div class="form-grid">
-            <div class="field">
-              <label for="name">Full Name *</label>
-              <input id="name" name="name" required>
-            </div>
+<div class="card">
+<h2>What happens next?</h2>
+<ol>
+<li>Enter your applicant details and M-Pesa number.</li>
+<li>Click the payment button.</li>
+<li>Wait for the M-Pesa prompt on your phone.</li>
+<li>Check the amount and business details displayed by Safaricom.</li>
+<li>Enter your M-Pesa PIN only on your phone if you approve the payment.</li>
+<li>Wait for payment verification and registration confirmation.</li>
+</ol>
+<p><strong>Never share your M-Pesa PIN with anyone or enter it on this website.</strong></p>
+</div>
+</section>
 
-            <div class="field">
-              <label for="company">Company Name *</label>
-              <input id="company" name="company" required>
-            </div>
+<footer>
+<p><strong>Tender Registration Support</strong></p>
+<p>Email: <a href="mailto:tender@millers.co.ke">tender@millers.co.ke</a></p>
+<p>© <span id="year"></span> Tender Registration Portal</p>
+</footer>
 
-            <div class="field">
-              <label for="email">Email Address *</label>
-              <input id="email" name="email" type="email" required>
-            </div>
+<script>
+const API_BASE_URL = "https://YOUR-BACKEND-DOMAIN.example.com";
 
-            <div class="field">
-              <label for="phone">Phone Number *</label>
-              <input id="phone" name="phone" type="tel" required>
-            </div>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-            <div class="field full">
-              <label for="reference">Tender Reference Number *</label>
-              <input id="reference" name="reference" required>
-            </div>
+const form = document.getElementById("paymentForm");
+const button = document.getElementById("payButton");
+const statusBox = document.getElementById("status");
 
-            <div class="field full">
-              <label for="category">Tender Category *</label>
-              <select id="category" name="category" required>
-                <option value="">Select category</option>
-                <option>Supply of goods</option>
-                <option>Provision of services</option>
-                <option>Construction or works</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
+function showStatus(message, color="#edf4ef") {
+  statusBox.style.display = "block";
+  statusBox.style.background = color;
+  statusBox.textContent = message;
+}
 
-          <p>
-            <label>
-              <input type="checkbox" required style="width:auto">
-              I confirm that my information is accurate and understand
-              that registration does not guarantee a tender award.
-            </label>
-          </p>
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-          <button class="button" type="submit">
-            Submit Registration Request
-          </button>
+  button.disabled = true;
+  button.textContent = "Requesting M-Pesa prompt...";
+  showStatus("Please wait while we contact the payment service.");
 
-          <div class="message" id="message" role="status"></div>
-        </form>
-      </div>
-    </section>
+  const details = {
+    name: document.getElementById("name").value.trim(),
+    company: document.getElementById("company").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    reference: document.getElementById("reference").value.trim()
+  };
 
-    <section>
-      <h2>Frequently Asked Questions</h2>
+  try {
+    const response = await fetch(API_BASE_URL + "/api/payments/stk-push", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(details)
+    });
 
-      <div class="card">
-        <h3>Does registration guarantee a contract?</h3>
-        <p>No. The official tender documents and evaluation criteria apply.</p>
+    const result = await response.json();
 
-        <h3>Is the fee confirmed?</h3>
-        <p>
-          The KSh 1,500 amount is a template setting. The issuing
-          organization must confirm the fee and payment channel.
-        </p>
+    if (!response.ok || !result.checkoutRequestId) {
+      throw new Error(result.message || "Could not start payment.");
+    }
 
-        <h3>Is this form connected to a database?</h3>
-        <p>
-          No. This starter website does not send or store applications.
-          A secure backend or approved form service is required.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <h3>TENDER PORTAL</h3>
-    <p>Official issuer: [Insert verified organization name]</p>
-    <p>Contact: [Insert official email and telephone]</p>
-    <p>&copy; <span id="year"></span> Tender Registration Portal</p>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    document.getElementById("tenderForm").addEventListener(
-      "submit",
-      function(event) {
-        event.preventDefault();
-
-        const message = document.getElementById("message");
-        message.style.display = "block";
-        message.textContent =
-          "Demo only: your application has not been sent or saved. " +
-          "Connect a secure form service before accepting real applications.";
-      }
+    showStatus(
+      "M-Pesa request sent. Check your phone for the KSh 1,500 prompt. " +
+      "Enter your PIN on your phone only if you approve the payment."
     );
-  </script>
+
+    button.textContent = "Waiting for payment response...";
+
+    // Check the backend for the callback result.
+    let attempts = 0;
+    const timer = setInterval(async () => {
+      attempts++;
+      try {
+        const check = await fetch(
+          API_BASE_URL + "/api/payments/status/" +
+          encodeURIComponent(result.checkoutRequestId)
+        );
+        const payment = await check.json();
+
+        if (payment.status === "callback_received") {
+          clearInterval(timer);
+          showStatus(
+            "Safaricom has sent a payment response. The payment is awaiting " +
+            "final verification. Please wait for official confirmation."
+          );
+          button.disabled = false;
+          button.textContent = "Request another payment";
+        } else if (payment.status === "failed") {
+          clearInterval(timer);
+          showStatus("Payment was not completed. " + (payment.message || ""));
+          button.disabled = false;
+          button.textContent = "Try payment again";
+        }
+      } catch (_) {
+        // Keep waiting if a temporary network error occurs.
+      }
+
+      if (attempts >= 40) {
+        clearInterval(timer);
+        showStatus(
+          "We have not received a payment response yet. Check your phone " +
+          "and contact tender@millers.co.ke if you need assistance."
+        );
+        button.disabled = false;
+        button.textContent = "Check or try again";
+      }
+    }, 3000);
+
+  } catch (error) {
+    showStatus(
+      error.message + " Please try again later or contact tender@millers.co.ke.",
+      "#fff0ed"
+    );
+    button.disabled = false;
+    button.textContent = "Pay KSh 1,500 via M-Pesa";
+  }
+});
+</script>
 </body>
 </html>
