@@ -4,27 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>BrightStart Business</title>
-
+  <title>Tender Registration Portal</title>
   <style>
-    /* CSS: controls the appearance */
-    * {
-      box-sizing: border-box;
+    :root {
+      --green: #124734;
+      --gold: #d8b45b;
+      --light: #f4f7f4;
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: #243047;
+      background: var(--light);
+      color: #24352c;
       line-height: 1.6;
-      background: #f5f7fb;
     }
 
     header {
-      background: #12305a;
+      background: var(--green);
       color: white;
-      padding: 20px 8%;
+      padding: 20px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -32,168 +33,276 @@
       gap: 12px;
     }
 
-    header h2 {
-      margin: 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 18px;
-    }
+    header h2 { margin: 0; }
+    header a { color: var(--gold); text-decoration: none; }
 
     .hero {
-      text-align: center;
-      padding: 90px 20px;
-      background: #e4edff;
+      background: linear-gradient(120deg, #124734, #267653);
+      color: white;
+      padding: 75px 7%;
     }
 
     .hero h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+      font-size: clamp(32px, 5vw, 52px);
+      max-width: 700px;
+      line-height: 1.15;
     }
 
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 24px;
-    }
+    .hero p { max-width: 650px; }
 
     .button {
       display: inline-block;
-      background: #1768d1;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 6px;
+      padding: 13px 22px;
+      background: var(--gold);
+      color: #173426;
       text-decoration: none;
       border: none;
+      border-radius: 7px;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 16px;
     }
 
-    section {
-      padding: 50px 8%;
-      text-align: center;
-    }
+    section { padding: 45px 7%; }
 
-    .services {
-      display: flex;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
     }
 
-    .service {
+    .card, form, .fee-box {
       background: white;
       padding: 25px;
-      border-radius: 10px;
-      flex: 1 1 200px;
-      max-width: 320px;
-      box-shadow: 0 3px 12px #0000000d;
+      border-radius: 12px;
+      border: 1px solid #dce5de;
     }
 
-    #message {
-      margin-top: 16px;
+    .card h3, h2 { color: var(--green); }
+
+    .registration {
+      background: #eaf0eb;
+    }
+
+    .fee {
+      font-size: 36px;
+      color: var(--green);
       font-weight: bold;
     }
 
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #bdcfc2;
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    .notice {
+      background: #fff4d5;
+      border-left: 5px solid var(--gold);
+      padding: 15px;
+      margin-top: 22px;
+    }
+
+    .message {
+      display: none;
+      padding: 15px;
+      margin-top: 18px;
+      background: #e5f3e8;
+      border-radius: 7px;
+    }
+
     footer {
-      background: #12305a;
+      background: #0d3326;
       color: white;
-      text-align: center;
-      padding: 20px;
+      padding: 28px 7%;
     }
 
     @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      header {
-        justify-content: center;
-      }
-
-      nav a {
-        margin: 0 8px;
-      }
+      .form-grid { grid-template-columns: 1fr; }
+      .full { grid-column: auto; }
+      .hero { padding: 48px 7%; }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- HTML: the website content -->
   <header>
-    <h2>BrightStart</h2>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <h2>TENDER PORTAL</h2>
+    <a href="#register">Register for Tender ↓</a>
   </header>
 
   <main>
-    <div class="hero" id="home">
-      <h1>Welcome to Our Business</h1>
-
+    <div class="hero">
+      <p>PROCUREMENT OPPORTUNITY</p>
+      <h1>Register your interest in our tender opportunity</h1>
       <p>
-        We help customers find the right solutions
-        through reliable service and quality work.
+        Review the tender information and submit your registration
+        request using the form below.
       </p>
-
-      <a class="button" href="#services">
-        Explore Our Services
-      </a>
+      <a class="button" href="#register">Start Registration</a>
     </div>
 
-    <section id="services">
-      <h2>What We Offer</h2>
+    <section>
+      <h2>Tender Information</h2>
 
-      <div class="services">
-        <div class="service">
-          <h3>Our Services</h3>
-          <p>Professional solutions for your needs.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Tender Title</h3>
+          <p>[Enter the official tender title]</p>
         </div>
 
-        <div class="service">
-          <h3>Quality Products</h3>
-          <p>Useful products selected with care.</p>
+        <div class="card">
+          <h3>Tender Reference</h3>
+          <p>[Enter the official reference number]</p>
         </div>
 
-        <div class="service">
-          <h3>Customer Support</h3>
-          <p>Friendly assistance when you need it.</p>
+        <div class="card">
+          <h3>Closing Date</h3>
+          <p>[Enter the confirmed closing date and time]</p>
         </div>
+      </div>
+
+      <div class="notice">
+        <strong>Important:</strong>
+        Confirm the tender with the issuing organization before
+        making any payment. Use only authorized payment details.
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Get in Touch</h2>
-      <p>Have a question? Start by clicking below.</p>
+    <section class="registration" id="register">
+      <h2>Applicant Registration</h2>
+      <p>Registration fee displayed: KSh 1,500.</p>
 
-      <button class="button" id="contactButton">
-        Contact Us
-      </button>
+      <div class="cards">
+        <div class="fee-box">
+          <h3>Registration Fee</h3>
+          <div class="fee">KSh 1,500</div>
+          <p>One-time fee, subject to confirmation by the official issuer.</p>
 
-      <p id="message"></p>
+          <h3>Payment Instructions</h3>
+          <p>
+            [Insert the verified and authorized Paybill, Till,
+            or bank payment instructions here.]
+          </p>
+          <p>Never share your M-Pesa PIN or bank password.</p>
+        </div>
+
+        <form id="tenderForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Full Name *</label>
+              <input id="name" name="name" required>
+            </div>
+
+            <div class="field">
+              <label for="company">Company Name *</label>
+              <input id="company" name="company" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address *</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" required>
+            </div>
+
+            <div class="field full">
+              <label for="reference">Tender Reference Number *</label>
+              <input id="reference" name="reference" required>
+            </div>
+
+            <div class="field full">
+              <label for="category">Tender Category *</label>
+              <select id="category" name="category" required>
+                <option value="">Select category</option>
+                <option>Supply of goods</option>
+                <option>Provision of services</option>
+                <option>Construction or works</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <p>
+            <label>
+              <input type="checkbox" required style="width:auto">
+              I confirm that my information is accurate and understand
+              that registration does not guarantee a tender award.
+            </label>
+          </p>
+
+          <button class="button" type="submit">
+            Submit Registration Request
+          </button>
+
+          <div class="message" id="message" role="status"></div>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="card">
+        <h3>Does registration guarantee a contract?</h3>
+        <p>No. The official tender documents and evaluation criteria apply.</p>
+
+        <h3>Is the fee confirmed?</h3>
+        <p>
+          The KSh 1,500 amount is a template setting. The issuing
+          organization must confirm the fee and payment channel.
+        </p>
+
+        <h3>Is this form connected to a database?</h3>
+        <p>
+          No. This starter website does not send or store applications.
+          A secure backend or approved form service is required.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 BrightStart Business</p>
-    <p>Built with HTML, CSS and JavaScript.</p>
+    <h3>TENDER PORTAL</h3>
+    <p>Official issuer: [Insert verified organization name]</p>
+    <p>Contact: [Insert official email and telephone]</p>
+    <p>&copy; <span id="year"></span> Tender Registration Portal</p>
   </footer>
 
   <script>
-    // JavaScript: makes the button interactive
-    const button = document.getElementById("contactButton");
-    const message = document.getElementById("message");
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-    button.addEventListener("click", function () {
-      message.textContent =
-        "Thank you for your interest! Add your contact details here.";
-    });
+    document.getElementById("tenderForm").addEventListener(
+      "submit",
+      function(event) {
+        event.preventDefault();
+
+        const message = document.getElementById("message");
+        message.style.display = "block";
+        message.textContent =
+          "Demo only: your application has not been sent or saved. " +
+          "Connect a secure form service before accepting real applications.";
+      }
+    );
   </script>
-
 </body>
 </html>
